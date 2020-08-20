@@ -72,7 +72,6 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
                 indexOfTheOnlyFaceUpCard = chosenCard
             }
         }
-        print(score)
     }
     
     struct Card: Identifiable {
