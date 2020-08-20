@@ -8,8 +8,9 @@
 
 import Foundation
 import SwiftUI
-struct MemoryGame <CardContent> where CardContent: Equatable{
+struct MemoryGame <CardContent> where CardContent: Equatable {
     var cards : Array<Card>
+    var score: Int
     
     var indexOfTheOnlyFaceUpCard: Int? {
         get {
@@ -45,6 +46,7 @@ struct MemoryGame <CardContent> where CardContent: Equatable{
             cards.append(Card(id: pairIndex*2+1, content: content))
             cards.shuffle()
         }
+        score = 0
     }
     
     mutating func resetGame(){
@@ -52,6 +54,7 @@ struct MemoryGame <CardContent> where CardContent: Equatable{
             cards[index].isFaceUp = false
             cards[index].isMatched = false
         }
+        score = 0
     }
     
     mutating func choose (card:Card){
@@ -61,12 +64,15 @@ struct MemoryGame <CardContent> where CardContent: Equatable{
                 if cards[chosenCard].content == cards[potencialMatchedIndex].content {
                     cards[chosenCard].isMatched = true
                     cards[potencialMatchedIndex].isMatched = true
+                    score += 3
                 }
                 self.cards[chosenCard].isFaceUp = true
+                score -= 1
             } else {
                 indexOfTheOnlyFaceUpCard = chosenCard
             }
         }
+        print(score)
     }
     
     struct Card: Identifiable {

@@ -103,8 +103,8 @@
 		77AA85C824EC726900E44403 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				77AA85C424EC6CE700E44403 /* MemoryGame.swift */,
 				77A578E624EF237C00137A0D /* GameClass.swift */,
+				77AA85C424EC6CE700E44403 /* MemoryGame.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

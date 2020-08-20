@@ -19,6 +19,7 @@ class EmojiMemoryGame: ObservableObject {
         model = MemoryGame<String>(numberOfPairs: randomInt) { pairIndex in
             return emojis[pairIndex]
         }
+        
     }
     
     
@@ -26,6 +27,10 @@ class EmojiMemoryGame: ObservableObject {
     
     var cards: Array<MemoryGame<String>.Card> {
         return model.cards
+    }
+    
+    var score :Int {
+        return model.score
     }
     
     //MARK: - Intent(s)

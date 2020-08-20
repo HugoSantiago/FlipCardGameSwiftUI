@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
+    
     var color:Color
     var themeName:String
     var body: some View {
@@ -27,8 +28,6 @@ struct GameView: View {
                 }.foregroundColor(color)
             }
             
-            Spacer()
-            
             Grid(viewModel.cards) {card in
                 CardView(card : card)
                     .onTapGesture{ self.viewModel.choose(card:card) }
@@ -37,11 +36,14 @@ struct GameView: View {
             .padding()
             .foregroundColor(color)
             
-            Text("Score")
-                .font(Font.title)
-                .foregroundColor(color)
+            HStack{
+                Text("Score")
+                Text(String(viewModel.score))
+            }
+            .font(Font.title)
+            .foregroundColor(color)
         }
-    .navigationBarTitle(themeName)
+        .navigationBarTitle(themeName)
     }
 }
 
