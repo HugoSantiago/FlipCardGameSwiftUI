@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  GameView.swift
 //  Memorize
 //
 //  Created by Hugo Santiago on 17/08/20.
@@ -10,22 +10,44 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
-    
+    var color:Color
+    var themeName:String
     var body: some View {
-        Grid(viewModel.cards) {card in
-            CardView(card : card)
-                .onTapGesture{ self.viewModel.choose(card:card) }
-                .padding(5)
-        }
+        Group {
             
-        .padding()
-        .foregroundColor(Color.orange)
+            Button(action: {
+                self.viewModel.resetGame()
+            }) {
+                HStack {
+                    Image(systemName: "repeat")
+                        .font(.title)
+                    Text("Repeat")
+                        .fontWeight(.semibold)
+                        .font(.title)
+                }.foregroundColor(color)
+            }
+            
+            Spacer()
+            
+            Grid(viewModel.cards) {card in
+                CardView(card : card)
+                    .onTapGesture{ self.viewModel.choose(card:card) }
+                    .padding(5)
+            }
+            .padding()
+            .foregroundColor(color)
+            
+            Text("Score")
+                .font(Font.title)
+                .foregroundColor(color)
+        }
+    .navigationBarTitle(themeName)
     }
 }
 
+
 struct CardView: View {
     var card: MemoryGame<String>.Card
-    
     var body : some View {
         GeometryReader{ geometry in
             self.body(for: geometry.size)
@@ -57,8 +79,3 @@ struct CardView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameView(viewModel: EmojiMemoryGame())
-    }
-}
