@@ -9,10 +9,11 @@
 import Foundation
 import SwiftUI
 struct MemoryGame <CardContent> where CardContent: Equatable {
-    var cards : Array<Card>
-    var score: Int
+    //Private (set) = ReadOnly
+    private(set) var cards : Array<Card>
+    private(set) var score: Int
     
-    var indexOfTheOnlyFaceUpCard: Int? {
+    private var indexOfTheOnlyFaceUpCard: Int? {
         get {
             var faceUpCardsIndices = [Int]()
             for index in cards.indices {
@@ -55,6 +56,7 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
             cards[index].isMatched = false
         }
         score = 0
+        cards.shuffle()
     }
     
     mutating func choose (card:Card){

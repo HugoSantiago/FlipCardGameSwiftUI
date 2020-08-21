@@ -27,5 +27,6 @@ let halloween = GameClass(id: 1, name: "Halloween", emojis: ["👻","🎃", "�
 let animal = GameClass(id: 2, name: "Animals", emojis: ["🐶","🐱","🐭","🦁","🐼","🐸","🐔","🦆"], color: Color.red)
 let sport = GameClass(id: 3, name: "Sports", emojis: ["⚽️","🏈","🏸","🏒","🏉","🪁","🥅","🏂"], color: Color.blue)
 let fruit = GameClass(id: 4, name: "Fruits", emojis: ["🍏","🍎","🍊","🥑","🍓","🍠","🍖","🥝"], color: Color.green)
+let city = GameClass(id: 5, name: "City", emojis: ["🚗","🚓","🚙","🚕","🚁","🚜","🚔","🚅"], color: Color.gray)
 
-let games = [halloween, animal, sport, fruit]
+let games = [halloween, animal, sport, fruit, city]
